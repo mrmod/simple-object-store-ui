@@ -1,5 +1,6 @@
 import React from 'react'
-import {List, ListItem, Paper, makeStyles, Typography} from "@material-ui/core"
+import {List,  Paper, makeStyles, Typography,  IconButton} from "@material-ui/core"
+import {GetApp} from "@material-ui/icons"
 
 const styles = {
     layout: {
@@ -10,13 +11,22 @@ const styles = {
         margin: "2px",
         padding: "4px",
     },
-    panel: {
+    downloadLink: {
+        float: "right",
     }
 }
 const headers = {"Content-Type": "application/json"}
 const API_URL = process.env.SOS_API_URL || "http://localhost:8000/"
 const useStyles = makeStyles(styles)
 const apiObjectsIndexUrl = `${API_URL}`
+
+const DownloadLink = ({objectId}) => <a
+    className={useStyles().downloadLink}
+    href={`${API_URL}${objectId}/stream`}>
+    <IconButton>
+        <GetApp />
+    </IconButton>
+</a>
 
 const ObjectListItem = ({objectId}) => {
     const [objectState, setObjectState] = React.useState({
@@ -34,6 +44,7 @@ const ObjectListItem = ({objectId}) => {
 
     const {size, ticketCount, tickets, nodes} = objectState
     return <Paper variant="outlined" square={true} className={useStyles().objectLayout}>
+        <DownloadLink objectId={objectId} />
         <Typography variant="h6">
             {objectId}
         </Typography>
