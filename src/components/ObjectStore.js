@@ -48,7 +48,7 @@ const ObjectListItem = ({ objectId }) => {
       .then(setObjectState)
   }, [])
 
-  const { size, ticketCount, tickets, nodes } = objectState
+  const { size, ticketCount, contentType, nodes } = objectState
   return (
     <Paper
       variant="outlined"
@@ -57,6 +57,7 @@ const ObjectListItem = ({ objectId }) => {
     >
       <DownloadLink objectId={objectId} />
       <Typography variant="h6">{objectId}</Typography>
+      <Typography variant="subtitle1">{contentType}</Typography>
       <Typography variant="subtitle1">{size || 0} bytes</Typography>
       <Typography variant="subtitle1">{ticketCount} tickets</Typography>
       <Typography variant="subtitle1">{nodes.length} nodes</Typography>
