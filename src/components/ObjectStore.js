@@ -70,7 +70,7 @@ const ObjectList = ({ objects }) => {
 
   return (
     <List>
-      {objects.map((objectId, i) => (
+      {objects.sort().map((objectId, i) => (
         <ObjectListItem key={i} objectId={objectId} />
       ))}
     </List>
