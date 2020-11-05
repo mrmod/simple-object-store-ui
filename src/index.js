@@ -1,29 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ObjectStore from './components/ObjectStore'
-import {withStyles, Typography, Toolbar, AppBar} from "@material-ui/core"
-const styles = {
-    navigationLabel: {
-        flexGrow: 1,
-    }
-}
+import Navigation from './components/Navigation'
 
-class Root extends React.Component {
+class SimpleObjectStore extends React.Component {
   render() {
-    return <div>
-        <AppBar position="static">
-            <Toolbar>
-                <Typography
-                    className={this.props.classes.navigationLabel}
-                    variant="h6">
-                        SimpleObjectStore
-                </Typography>
-            </Toolbar>
-        </AppBar>
+    return (
+      <div>
+        <Navigation />
         <ObjectStore />
-    </div>
+      </div>
+    )
   }
 }
 
-const SimpleObjectStore = withStyles(styles)(Root)
 ReactDOM.render(<SimpleObjectStore />, document.getElementById('app'))
